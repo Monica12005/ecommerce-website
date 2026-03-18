@@ -26,6 +26,10 @@ app.use('/api/product', ProductRouter);
 app.use('/api/cart', cartRouter)
 app.use('/api/order', orderRouter)
 
+app.get('/', (req, res) => {
+    res.send('API WORKING');
+});
+
 // only start server if not running in a serverless environment (like Vercel)
 if (process.env.NODE_ENV !== 'production' || port) {
     app.listen(port, () => {
