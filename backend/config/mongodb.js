@@ -13,6 +13,10 @@
 import mongoose from "mongoose";
 
 const connectDB = async () => {
+  if (!process.env.MONGODB_URL) {
+    console.error("MONGODB_URL missing in environment variables!");
+    return;
+  }
   try {
     mongoose.connection.on("connected", () => {
       console.log("DB connected");
