@@ -20,14 +20,17 @@ connectCloudinary();
 app.use(express.json());
 app.use(cors());
 
-//api endpoints
+// api endpoints
 app.use('/api/user', UserRouter);
 app.use('/api/product', ProductRouter);
 app.use('/api/cart', cartRouter)
 app.use('/api/order', orderRouter)
 
-app.listen(port, () => {
-    console.log(`Server is running on port ${port}`);
-});
+// only start server if not running in a serverless environment (like Vercel)
+if (process.env.NODE_ENV !== 'production' || port) {
+    app.listen(port, () => {
+        console.log(`Server is running on port ${port}`);
+    });
+}
 
 export default app;

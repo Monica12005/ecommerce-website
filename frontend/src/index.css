@@ -1,0 +1,132 @@
+@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&family=Prata&display=swap');
+@import "tailwindcss";
+
+:root {
+  --primary: #1a1a2e;
+  --accent: #5e60ce;
+  --card-bg: rgba(255, 255, 255, 0.6);
+  --shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.07);
+}
+
+body {
+  font-family: 'Outfit', sans-serif;
+  color: var(--primary);
+  -webkit-font-smoothing: antialiased;
+  min-height: 100vh;
+  position: relative;
+  overflow-x: hidden;
+}
+
+/* Unique Animated Holographic Background */
+body::before {
+  content: "";
+  position: fixed;
+  top: -50%;
+  left: -50%;
+  right: -50%;
+  bottom: -50%;
+  z-index: -10;
+  background:
+    radial-gradient(circle at 20% 40%, rgba(255, 183, 178, 0.7), transparent 40%),
+    radial-gradient(circle at 80% 20%, rgba(181, 234, 215, 0.7), transparent 40%),
+    radial-gradient(circle at 50% 80%, rgba(199, 206, 234, 0.7), transparent 40%),
+    radial-gradient(circle at 80% 80%, rgba(226, 240, 203, 0.7), transparent 40%);
+  background-color: #fdfbfb;
+  animation: floatBlobs 25s infinite alternate cubic-bezier(0.4, 0, 0.2, 1);
+  filter: blur(40px);
+}
+
+@keyframes floatBlobs {
+  0% {
+    transform: rotate(0deg) scale(1);
+  }
+
+  50% {
+    transform: rotate(5deg) scale(1.1);
+  }
+
+  100% {
+    transform: rotate(-5deg) scale(1.05);
+  }
+}
+
+/* Premium Inputs with Unique Glass Styling */
+select,
+input,
+textarea {
+  border: 1px solid rgba(255, 255, 255, 0.4);
+  background: rgba(255, 255, 255, 0.5) !important;
+  backdrop-filter: blur(10px);
+  outline: none;
+  border-radius: 12px;
+  transition: all 0.3s ease;
+  color: var(--primary);
+}
+
+select:focus,
+input:focus,
+textarea:focus {
+  border-color: var(--accent);
+  background: rgba(255, 255, 255, 0.8) !important;
+  box-shadow: 0 0 0 3px rgba(94, 96, 206, 0.15);
+}
+
+.prata-regular {
+  font-family: 'Prata', serif;
+}
+
+/* Active States */
+.active {
+  background-color: var(--accent) !important;
+  color: white !important;
+  border-color: var(--accent) !important;
+  box-shadow: 0 4px 10px rgba(243, 166, 131, 0.3) !important;
+}
+
+/* Global Button Hover Details */
+button {
+  transition: all 0.3s ease;
+  border-radius: 6px;
+}
+
+button:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 15px rgba(0, 0, 0, 0.1);
+}
+
+/* Smooth Image Hovers */
+img {
+  transition: transform 0.4s ease;
+}
+
+/* Premium Card and Div Restyling */
+.border,
+.border-b,
+.border-t {
+  border-color: #eaeaea;
+}
+
+.shadow-md,
+.shadow-lg {
+  box-shadow: var(--shadow) !important;
+  backdrop-filter: blur(10px);
+  background: var(--card-bg);
+}
+
+/* Page Load Animation Setup */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.pt-16,
+.py-10 {
+  animation: fadeIn 0.6s ease-out forwards;
+}
