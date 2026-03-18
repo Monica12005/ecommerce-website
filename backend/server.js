@@ -30,8 +30,8 @@ app.get('/', (req, res) => {
     res.send('API WORKING');
 });
 
-// only start server if not running in a serverless environment (like Vercel)
-if (process.env.NODE_ENV !== 'production' || port) {
+// only start server if not running on Vercel
+if (!process.env.VERCEL) {
     app.listen(port, () => {
         console.log(`Server is running on port ${port}`);
     });
